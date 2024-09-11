@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AltTextly</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/AltTextly Favicon.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -175,7 +182,16 @@
             border-radius: 100px;
             cursor: pointer;
             margin-bottom: 5rem;
+            transition: background-color 0.3s ease;
         }
+
+        .create-button:disabled {
+            background-color: #d3d3d3;
+            color: #a0a0a0;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
         .google-signup {
             display: flex;
             align-items: center;
@@ -223,6 +239,23 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        .result-container {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .result-item {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -230,9 +263,9 @@
         <!-- This is an empty anchor that covers the entire background -->
     </a>
     <header>
-        <div class="logo">
-            <img src="images/alttextly logo black.svg" alt="AltTextly Logo">
-        </div>
+        <a href="/" class="logo">
+            <img src="assets/images/alttextly-logo-black.svg" alt="AltTextly Logo" onerror="this.onerror=null; this.src='assets/images/alttextly-logo-black.png'; console.log('SVG failed to load, trying PNG');">
+        </a>
         <div class="nav-container-wrapper">
             <div class="nav-container">
                 <button class="nav-button">Features</button>
@@ -245,7 +278,7 @@
     </header>
     <main>
         <section class="left-panel">
-            <h1>Free and Fast AI Alt Text Generator</h1>
+            <h1>Generate Alt Text. Free and Fast.</h1>
             <div class="file-input">
                 <div class="file-input-icon">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +290,7 @@
                     <span class="file-input-subtext">Or select a folder</span>
                 </div>
             </div>
-            <button class="create-button">Create Alt Text</button>
+            <button class="create-button" disabled>Create Alt Text</button>
             <div class="google-signup">
                 <svg class="google-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                     <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
@@ -285,9 +318,13 @@
             document.getElementById('backgroundLink').href = linkUrl;
             checkBackgroundBrightness();
         }
+        document.querySelector('.logo img').addEventListener('load', function() {
+            console.log('Logo image loaded successfully');
+        });
 
         // Example usage:
         // updateBackgroundImage('https://images.unsplash.com/photo-1690475565796-e1c097a15fe8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
     </script>
+    <script src="script.js"></script>
 </body>
 </html>

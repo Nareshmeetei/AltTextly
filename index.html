@@ -6,7 +6,7 @@
     <title>AltTextly</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/AltTextly Favicon.png">
+    <link rel="icon" type="image/png" href="assets/images/alttextly-favicon.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -68,10 +68,12 @@
             display: flex;
             align-items: center;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.rem;
             filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1))
                     drop-shadow(0 0 5px rgba(255, 255, 255, 0.3))
                     drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+            transform: scale(0.8); /* This will make the logo 20% smaller */
+            transform-origin: left center; /* This ensures the logo shrinks from the left side */
         }
         .logo-icon {
             width: 30px;
@@ -88,13 +90,13 @@
             display: flex;
             gap: 1rem;
             background-color: rgba(246, 246, 246, 0.8);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.8rem;
             border-radius: 100px;
             height: 48px; /* Set a specific height */
             align-items: center;
         }
         .nav-button {
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.7rem;
             border: none;
             border-radius: 100px;
             background-color: transparent;
@@ -102,16 +104,36 @@
             height: 100%; /* Make buttons fill the height of the container */
             display: flex;
             align-items: center;
+            font-size: 0.9em;
+            font-weight: 350;
         }
         .nav-button.dark {
             background-color: #333;
             color: rgb(246, 246, 246);
             margin-left: 1rem; /* Add margin to separate from the nav-container */
             height: 48px; /* Match the height of the nav-container */
-            width: 180px;
+            width: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: none;
+        }
+        .nav-button.dark .signup-text {
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-button.dark:hover .signup-text {
+            opacity: 0.7;
+        }
+
+        /* Keep the general hover effect for other navigation items */
+        .nav-container .nav-button:hover {
+            opacity: 0.7;
+        }
+
+        /* Ensure the dark button itself doesn't change opacity */
+        .nav-button.dark:hover {
+            opacity: 1;
         }
         main {
             display: flex;
@@ -147,7 +169,32 @@
             border-radius: 100px;
             cursor: pointer;
             margin-bottom: 1rem;
+            transition: background-color 0.3s ease;  /* Add transition for background color */
         }
+
+        .file-input-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .add-files-text {
+            transition: opacity 0.3s ease;
+        }
+
+        .file-input:hover {
+            background-color: #eaeaea;  /* Very light gray background on hover */
+        }
+
+        .file-input:hover .add-files-text {
+            opacity: 0.7;
+        }
+
+        .file-input-subtext {
+            color: #B3B3B3;
+            font-size: 0.8em;
+        }
+
         .file-input-icon {
             width: 32px;
             height: 32px;
@@ -156,19 +203,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: background-color 0.3s ease;  /* Add transition for icon background */
         }
         .file-input-icon svg {
             width: 16px;
             height: 16px;
         }
-        .file-input-text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .file-input-subtext {
-            color: #B3B3B3;
-            font-size: 0.8em;
+        .file-input:hover .file-input-icon {
+            background-color: #2a2a2a;  /* Slightly lighter background for icon on hover */
         }
         .create-button {
             width: 100%;
@@ -177,17 +219,21 @@
             font-weight: 550;
             color: #e8e8e8;
             padding: 0.5rem;
-            background-color: #a5a5a5;
+            background-color: #a5a5a5; /* Default background color */
             border: none;
             border-radius: 100px;
             cursor: pointer;
-            margin-bottom: 5rem;
-            transition: background-color 0.3s ease;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .create-button.active {
+            background-color: #333; /* Activated background color */
         }
 
         .create-button:disabled {
             background-color: #d3d3d3;
-            color: #a0a0a0;
+            color: #404040;
             cursor: not-allowed;
             opacity: 0.5;
         }
@@ -196,13 +242,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8em;
+            font-size: 0.9em;
             gap: 0.5rem;
             padding: 0.5rem 1rem;
             border: 1px solid #ccc;
             border-radius: 100px;
             cursor: pointer;
             margin-bottom: 1rem;
+            margin-top: 2.5rem;
+        }
+        .google-signup:hover {
+            opacity: 0.7;
+            background-color: #f1f1f1;
+        }
+
+        .google-signup {
+            transition: opacity 0.3s ease;
+            
         }
         .google-logo {
             width: 20px;
@@ -212,6 +268,11 @@
             font-weight: 600;
             font-size: 1em;
             text-decoration: underline;
+            color: inherit; /* This ensures the link color matches the text color */
+            transition: opacity 0.3s ease;
+        }
+        .get-pro:hover {
+            opacity: 0.7;
         }
         footer {
             display: flex;
@@ -235,9 +296,11 @@
         footer a {
             color: rgb(40, 40, 40); /* Fully opaque medium gray for links */
             text-decoration: none;
+            transition: opacity 0.3s ease;
         }
         footer a:hover {
-            text-decoration: underline;
+            opacity: 1; /* Set opacity to 1 on hover */
+            text-decoration: underline; /* Optional: underline on hover */
         }
 
         .result-container {
@@ -256,6 +319,24 @@
             display: block;
             margin-bottom: 0.5rem;
         }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.5;
+        }
+
+        .error-message {
+            font-size: 10pt; /* Font size for the error message */
+            color: #E73B3B; /* Color for the error message */
+            margin-bottom: 10%; /* Optional: Add space below the error message */
+            text-align: center; /* Center the error message */
+            font-weight: 400;
+        }
     </style>
 </head>
 <body>
@@ -268,29 +349,33 @@
         </a>
         <div class="nav-container-wrapper">
             <div class="nav-container">
-                <button class="nav-button">Features</button>
-                <button class="nav-button">Resources</button>
-                <button class="nav-button">Blog</button>
-                <button class="nav-button">Sign In</button>
+                <a href="/features" class="nav-button">Promote Product</a>
+                <a href="/resources" class="nav-button">Features</a>
+                <a href="/blog" class="nav-button">Blog</a>
+                <a href="/signin" class="nav-button">Sign In</a>
             </div>
-            <button class="nav-button dark">Unlock All Features</button>
+            <a href="/unlock-features" class="nav-button dark">
+                <span class="signup-text">Sign Up</span>
+            </a>
         </div>
     </header>
     <main>
         <section class="left-panel">
             <h1>Generate Alt Text. Free and Fast.</h1>
             <div class="file-input">
-                <div class="file-input-icon">
+                <input type="file" id="file-input" multiple style="display: none;" />
+                <div class="file-input-icon" onclick="document.getElementById('file-input').click();">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 5V19M5 12H19" stroke="#e8e8e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
-                <div class="file-input-text">
-                    <span>Add files</span>
+                <div class="file-input-text" onclick="document.getElementById('file-input').click();">
+                    <span id="file-count" class="add-files-text">Add files</span>
                     <span class="file-input-subtext">Or select a folder</span>
                 </div>
             </div>
-            <button class="create-button" disabled>Create Alt Text</button>
+            <button id="create-alt-text" class="create-button" disabled>Create Alt Text</button>
+            <div id="error-message" class="error-message" style="display: none;"></div> <!-- Error message below the button -->
             <div class="google-signup">
                 <svg class="google-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
                     <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
@@ -300,13 +385,13 @@
                 </svg>
                 Sign up with Google
             </div>
-            <p class="get-pro">Get Pro - Unlock All Features</p>
+            <a href="/pro" class="get-pro">Get Pro - Unlock All Features</a>
         </section>
     </main>
     <footer>
         <p>Copyright © 2024 AltText™</p>
         <nav>
-            <a href="#">Promote your brand/product</a>
+            <a href="#">The more you use this app, the more trees we plant</a>
             <a href="#">Terms of Service</a>
             <a href="#">Privacy Policy</a>
         </nav>
@@ -324,7 +409,68 @@
 
         // Example usage:
         // updateBackgroundImage('https://images.unsplash.com/photo-1690475565796-e1c097a15fe8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+        <div id="root"></div>
     </script>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fileInput = document.getElementById('file-input');
+            const createAltTextButton = document.getElementById('create-alt-text');
+
+            // Listen for changes to the file input
+            fileInput.addEventListener('change', (event) => {
+                const files = event.target.files;
+                handleFiles(files);
+            });
+
+            // Function to handle the selected files
+            function handleFiles(files) {
+                const fileCountElement = document.getElementById('file-count');
+                const errorMessageElement = document.getElementById('error-message');
+                let hasError = false;
+
+                // Reset error message
+                errorMessageElement.style.display = 'none';
+                errorMessageElement.textContent = '';
+
+                if (files.length > 0) {
+                    console.log(`Selected files: ${files.length}`);
+                    createAltTextButton.disabled = false; // Enable the button
+                    createAltTextButton.classList.add('active'); // Add active class
+                    
+                    // Check file sizes
+                    for (let i = 0; i < files.length; i++) {
+                        if (files[i].size > 5 * 1024 * 1024) { // 5 MB in bytes
+                            hasError = true;
+                            break;
+                        }
+                    }
+
+                    if (hasError) {
+                        errorMessageElement.textContent = "Oops! Make sure your files are smaller than 5MB.";
+                        errorMessageElement.style.display = 'block'; // Show error message
+                        createAltTextButton.disabled = true; // Disable the button
+                        createAltTextButton.classList.remove('active'); // Remove active class
+                        fileCountElement.textContent = 'Add files'; // Reset file count text
+                    } else {
+                        // Update the file count text
+                        fileCountElement.textContent = `${files.length} files selected`;
+                        errorMessageElement.style.display = 'none'; // Hide error message
+                    }
+
+                    for (let i = 0; i < files.length; i++) {
+                        console.log(`File ${i + 1}: ${files[i].name}`);
+                    }
+                } else {
+                    console.log('No files selected.');
+                    createAltTextButton.disabled = true; // Disable the button if no files
+                    createAltTextButton.classList.remove('active'); // Remove active class
+                    
+                    // Reset the file count text
+                    fileCountElement.textContent = 'Add files';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
